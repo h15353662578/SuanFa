@@ -1,5 +1,7 @@
 package com.hs.day1;
 
+import com.hs.day2.Eg1;
+
 /**
  * @author Huasheng
  * @Date 2021/03/31/22:56
@@ -13,8 +15,16 @@ public class Eg7 {
         return next;
     }
 
+    public void setNext(Eg7 next) {
+        this.next = next;
+    }
+
     public Eg7(int data){
         this.data=data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
     }
 }
 
@@ -43,9 +53,10 @@ class SortList{
                     //将currEg7值标记为最小值
                     currEg7.data = temp;
                 }
-                //如果nextEg7的数值大于第一位的数值 则把下一位的值放入nextEg7
+                //如果循环还没结束 则把nextEg7下一位的值放入nextEg7
                 nextEg7 = nextEg7.next;
             }
+            //如果循环还没结束 则把currEg7下一位的值放入nextEg7
             currEg7 = currEg7.next;
         }
         //返回head标识
@@ -68,10 +79,10 @@ class SortList{
         Eg7 currEg7 = head;
         //如果currEg7还有下一位
         while (currEg7.next != null){
-            //
+            //将下一位赋值给currEg7 继续循环
             currEg7 = currEg7.next;
         }
-        //
+        //新传进的节点链接到链表尾部
         currEg7.next = eg7;
         //返回头部标识
         return head;
@@ -96,32 +107,44 @@ class SortList{
         Eg7 head = null;
 
         //新增节点
-        head = sortList.add(2,head);
-        sortList.add(6,head);
-        sortList.add(7,head);
-        sortList.add(53,head);
-        sortList.add(234,head);
-        sortList.add(432,head);
-        sortList.add(43,head);
-        sortList.add(64,head);
-        sortList.add(61,head);
-        sortList.add(45,head);
-        sortList.add(56,head);
-        sortList.add(67,head);
-        sortList.add(76,head);
-        sortList.add(87,head);
-        sortList.add(98,head);
-        sortList.add(12,head);
-        sortList.add(2,head);
-        sortList.add(1,head);
-        System.out.println("排序链表前: ");
-        sortList.println(head);
-
-
-        //排序 实例化调用SortList()方法
-        head = sortList.SortList(head);
+//        head = sortList.add(2,head);
+//        sortList.add(6,head);
+//        sortList.add(7,head);
+//        sortList.add(53,head);
+//        sortList.add(234,head);
+//        sortList.add(432,head);
+//        sortList.add(43,head);
+//        sortList.add(64,head);
+//        sortList.add(61,head);
+//        sortList.add(45,head);
+//        sortList.add(56,head);
+//        sortList.add(67,head);
+//        sortList.add(76,head);
+//        sortList.add(87,head);
+//        sortList.add(98,head);
+//        sortList.add(12,head);
+//        sortList.add(2,head);
+//        sortList.add(1,head);
+//        System.out.println("排序链表前: ");
+//        sortList.println(head);
+//
+//
+//        //排序 实例化调用SortList()方法
+//        head = sortList.SortList(head);
 
         System.out.println("排序后 ");
         sortList.println(head);
+
+
+        Eg7 eg1 = new Eg7(1);
+        Eg7 eg2 = new Eg7(3);
+        Eg7 eg3 = new Eg7(2);
+        eg1.setNext(eg2);
+        eg2.setNext(eg3);
+        Eg7 link1 = sortList.SortList(eg1);
+        while (link1 != null) {
+            System.out.println(link1.data);
+            link1 = link1.next;
+        }
     }
 }
